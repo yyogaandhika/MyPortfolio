@@ -21,7 +21,7 @@ const mockProjects = [
     id: 2,
     title: "Product ML API",
     category: "React & Node.js",
-    image: "/apiProduct.png",
+    image: "/Apiproduct.png",
     demoUrl: "https://product-ml-api.vercel.app/",
     codeUrl:
       "https://github.com/yyogaandhika/product_ml_api.git",
