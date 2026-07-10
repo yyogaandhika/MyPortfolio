@@ -29,7 +29,7 @@ export default function Contact() {
 
     const formData = new FormData(e.currentTarget);
     // Ganti string di bawah ini dengan Access Key dari email Anda
-    formData.append("access_key", "YOUR_ACCESS_KEY_HERE");
+    formData.append("access_key", "a5de5d4c-ad9b-40ce-9a15-7c8646acea9f");
     formData.append("subject", "New Contact from Portfolio");
     formData.append("from_name", "Portfolio Contact Form");
 
