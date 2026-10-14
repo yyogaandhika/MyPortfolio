@@ -31,7 +31,7 @@ export const projects: Project[] = [
       "AI-assisted science curriculum summarization web application designed to accelerate student comprehension through structured automated extraction.",
     techStack: ["Next.js", "TypeScript", "Tailwind CSS", "AI NLP", "Lucide"],
     impact: "Significantly speeds up reading comprehension by converting dense academic textbooks into clean, structured takeaways.",
-    hasCaseStudy: false,
+    hasCaseStudy: true,
   },
   {
     id: 3,
@@ -47,7 +47,7 @@ export const projects: Project[] = [
       "Predictive analytics web application utilizing trained machine learning classification algorithms to forecast consumer next-purchase shopping categories.",
     techStack: ["Python", "Scikit-Learn", "Machine Learning", "Streamlit", "Vercel"],
     impact: "Demonstrates practical algorithmic prediction on customer transaction patterns to optimize retail recommendation pipelines.",
-    hasCaseStudy: false,
+    hasCaseStudy: true,
   },
   {
     id: 4,
@@ -63,6 +63,6 @@ export const projects: Project[] = [
       "Scalable machine learning backend REST API microservice paired with an interactive frontend telemetry dashboard for real-time inference.",
     techStack: ["Python", "Flask / FastAPI", "React", "REST API", "Tailwind"],
     impact: "Bridges Python-based machine learning inference engines with modern reactive frontends via performant JSON endpoints.",
-    hasCaseStudy: false,
+    hasCaseStudy: true,
   },
 ];
