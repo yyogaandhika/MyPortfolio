@@ -4,6 +4,9 @@ import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { experiences } from "@/data/experiences";
+import { contactDetails } from "@/data/contact";
+import { SocialIcon } from "@/components/icons";
 
 export default function About() {
   const container = useRef<HTMLDivElement>(null);
@@ -47,6 +50,7 @@ export default function About() {
               src="/yoga2.jpeg"
               alt="Yoga Andhika"
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               priority
               className="object-cover transition-transform duration-700 group-hover:scale-110"
             />
@@ -57,11 +61,47 @@ export default function About() {
             {/* Accent Glow */}
             <div className="absolute inset-0 bg-accent/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
-            {/* File Name */}
-            <div className="absolute bottom-6 left-6">
-              <p className="font-mono text-sm text-white/80">
-                YOGA.JPEG
-              </p>
+            {/* Location & Status Badge */}
+            <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
+              <div>
+                <p className="font-display font-bold text-white text-base">{contactDetails.name}</p>
+                <p className="font-mono text-xs text-accent">{contactDetails.location}</p>
+              </div>
+              <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 border border-white/10 backdrop-blur-sm">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="font-mono text-[11px] text-gray-300">{contactDetails.availability}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Action Button & Socials */}
+          <div className="mt-8 flex flex-col gap-5 fade-up">
+            <a
+              href="/contact"
+              className="w-full py-3.5 px-6 bg-white text-black font-semibold text-xs uppercase tracking-widest rounded-full text-center hover:bg-accent transition-colors"
+            >
+              Get In Touch
+            </a>
+
+            <div className="flex items-center justify-between pt-2">
+              <span className="text-xs uppercase tracking-widest text-accent font-semibold font-mono">
+                Connect
+              </span>
+              <div className="flex gap-2">
+                {contactDetails.socials.map((item) => (
+                  <a
+                    key={item.id}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2.5 rounded-full border border-white/10 bg-white/5 text-gray-400 hover:text-black hover:bg-accent hover:border-accent transition-all"
+                    title={item.label}
+                    aria-label={item.label}
+                  >
+                    <SocialIcon id={item.id} size={16} />
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
         </div>
@@ -72,10 +112,8 @@ export default function About() {
             <h3 className="text-accent text-sm tracking-widest uppercase font-semibold mb-4">
               Philosophy
             </h3>
-            <p className="font-sans text-xl md:text-3xl font-light text-gray-300 leading-relaxed">
-              I believe that premium web experiences exist at the intersection
-              of robust engineering and meticulous design. It&apos;s not enough
-              for an application to just work; it has to feel alive.
+            <p className="font-sans text-xl md:text-2xl font-light text-gray-300 leading-relaxed">
+              I believe compelling digital products exist at the intersection of solid engineering and purposeful interaction. Rather than building static interfaces, I craft web applications that feel fluid, responsive, and genuinely enjoyable to use.
             </p>
           </div>
 
@@ -83,53 +121,40 @@ export default function About() {
             <h3 className="text-accent text-sm tracking-widest uppercase font-semibold mb-4">
               Background
             </h3>
-            <p className="font-sans text-lg text-gray-400 leading-relaxed">
-              With a strong foundation in modern JavaScript frameworks such as
-              React and Next.js, combined with a passion for UI/UX and motion
-              design using GSAP, I enjoy creating modern digital experiences
-              that are both functional and visually engaging.
+            <p className="font-sans text-base md:text-lg text-gray-400 leading-relaxed">
+              Currently pursuing Informatics Engineering at Politeknik Caltex Riau, I specialize in modern frontend engineering using React, Next.js, and GSAP animations. Alongside frontend craft, I actively explore Machine Learning—developing models, RESTful APIs, and connecting intelligent systems to interactive web interfaces.
             </p>
           </div>
 
           <div className="fade-up pt-8 border-t border-white/10">
             <h3 className="text-accent text-sm tracking-widest uppercase font-semibold mb-8">
-              Experience
+              Experience & Education
             </h3>
 
             <ul className="flex flex-col gap-8">
-              {[
-                {
-                  role: "Frontend Developer",
-                  company: "Personal Projects",
-                  year: "2025 - Present",
-                },
-                {
-                  role: "Machine Learning Developer",
-                  company: "Research & Academic Projects",
-                  year: "2024 - Present",
-                },
-                {
-                  role: "Computer Science Student",
-                  company: "Politeknik Caltex Riau",
-                  year: "2023 - Present",
-                },
-              ].map((job, idx) => (
+              {experiences.map((job, idx) => (
                 <li
                   key={idx}
-                  className="flex justify-between items-baseline border-b border-white/5 pb-4"
+                  className="border-b border-white/5 pb-6 last:border-b-0"
                 >
-                  <div>
+                  <div className="flex justify-between items-baseline mb-2">
                     <h4 className="text-xl font-display font-semibold text-white">
                       {job.role}
                     </h4>
-                    <p className="text-gray-500 font-sans">
-                      {job.company}
-                    </p>
+                    <span className="text-xs font-mono text-accent">
+                      {job.year}
+                    </span>
                   </div>
 
-                  <span className="text-sm font-mono text-accent">
-                    {job.year}
-                  </span>
+                  <p className="text-sm font-medium text-gray-300 mb-2">
+                    {job.company}
+                  </p>
+
+                  {job.description && (
+                    <p className="text-sm text-gray-400 font-sans leading-relaxed">
+                      {job.description}
+                    </p>
+                  )}
                 </li>
               ))}
             </ul>

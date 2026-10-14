@@ -1,10 +1,9 @@
 "use client";
 
+import { marqueeSkills } from "@/data/skills";
+
 export default function InfiniteMarquee() {
-  const items = [
-    "Frontend Development", "Creative Coding", "Next.js", "GSAP Animations", 
-    "Backend Architecture", "WebGL", "UI/UX Engineering"
-  ];
+  const items = marqueeSkills;
   
   return (
     <section className="py-16 md:py-24 overflow-hidden border-y border-border bg-black relative">

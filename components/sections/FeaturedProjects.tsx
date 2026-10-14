@@ -3,30 +3,14 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { ArrowUpRight, Code } from "lucide-react";
+import { projects } from "@/data/projects";
 
-const mockProjects = [
-  {
-    id: 1,
-    title: "EduSummarize Website",
-    category: "React & Next.js",
-    image: "/Edusummarize.png",
-    demoUrl:
-      "https://edu-summarize-website-peringkas-pel.vercel.app/",
-    codeUrl:
-      "https://github.com/yyogaandhika/EduSummarize-Website-Peringkas-Pelajaran-Saints.git",
-  },
-  {
-    id: 2,
-    title: "Product ML API",
-    category: "React & Node.js",
-    image: "/Apiproduct.png",
-    demoUrl: "https://product-ml-api.vercel.app/",
-    codeUrl:
-      "https://github.com/yyogaandhika/product_ml_api.git",
-  },
-];
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 export default function FeaturedProjects() {
   const container = useRef<HTMLDivElement>(null);
@@ -58,128 +42,153 @@ export default function FeaturedProjects() {
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
 
-    gsap.to(card.querySelector(".card-inner"), {
-      rotateY: (x / rect.width) * 20,
-      rotateX: -(y / rect.height) * 20,
-      duration: 0.5,
-      ease: "power2.out",
-    });
+    const inner = card.querySelector(".card-inner");
+    const img = card.querySelector(".parallax-img");
 
-    gsap.to(card.querySelector(".parallax-img"), {
-      x: (x / rect.width) * 15,
-      y: (y / rect.height) * 15,
-      duration: 0.5,
-      ease: "power2.out",
-    });
+    if (inner) {
+      gsap.to(inner, {
+        rotateY: (x / rect.width) * 14,
+        rotateX: -(y / rect.height) * 14,
+        duration: 0.35,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
+    }
+
+    if (img) {
+      gsap.to(img, {
+        x: (x / rect.width) * 10,
+        y: (y / rect.height) * 10,
+        duration: 0.35,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
+    }
   };
 
   const handleMouseLeave = (
     e: React.MouseEvent<HTMLDivElement>
   ) => {
     const card = e.currentTarget;
+    const inner = card.querySelector(".card-inner");
+    const img = card.querySelector(".parallax-img");
 
-    gsap.to(card.querySelector(".card-inner"), {
-      rotateY: 0,
-      rotateX: 0,
-      duration: 0.5,
-      ease: "power2.out",
-    });
+    if (inner) {
+      gsap.to(inner, {
+        rotateY: 0,
+        rotateX: 0,
+        duration: 0.4,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
+    }
 
-    gsap.to(card.querySelector(".parallax-img"), {
-      x: 0,
-      y: 0,
-      duration: 0.5,
-      ease: "power2.out",
-    });
+    if (img) {
+      gsap.to(img, {
+        x: 0,
+        y: 0,
+        duration: 0.4,
+        ease: "power2.out",
+        overwrite: "auto",
+      });
+    }
   };
 
   return (
     <section
       ref={container}
-      className="py-32 px-6 md:px-12 lg:px-24 bg-background relative z-10"
+      id="featured-works"
+      className="py-24 md:py-32 px-6 md:px-12 lg:px-24 bg-background relative z-10"
     >
-      <div className="mb-20 flex justify-between items-end">
-        <h2 className="font-display text-5xl md:text-7xl font-bold uppercase tracking-tighter">
-          Featured <br />
-          <span className="text-gray-500">Works</span>
-        </h2>
+      <div className="max-w-7xl mx-auto">
+        <div className="mb-14 md:mb-16 flex justify-between items-end">
+          <h2 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tighter">
+            Featured <br />
+            <span className="text-gray-500">Works</span>
+          </h2>
 
-        <Link
-          href="/work"
-          className="text-accent hover:text-white transition-colors flex items-center gap-2 pb-2 border-b border-accent hover:border-white"
-        >
-          <span className="uppercase text-sm tracking-widest font-semibold">
-            View All
-          </span>
-          <ArrowUpRight size={20} />
-        </Link>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24">
-        {mockProjects.map((project, idx) => (
-          <div
-            key={project.id}
-            className={`project-card relative cursor-pointer ${
-              idx % 2 !== 0 ? "md:mt-32" : ""
-            }`}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{ perspective: "1000px" }}
+          <Link
+            href="/work"
+            className="text-accent hover:text-white transition-colors flex items-center gap-2 pb-2 border-b border-accent hover:border-white"
           >
-            {/* Glow */}
-            <div className="absolute inset-0 bg-accent/20 blur-[50px] opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-xl" />
+            <span className="uppercase text-xs md:text-sm tracking-widest font-semibold">
+              View All
+            </span>
+            <ArrowUpRight size={18} />
+          </Link>
+        </div>
 
-            <div className="card-inner relative w-full aspect-[4/5] overflow-hidden rounded-xl">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project) => (
+            <div
+              key={project.id}
+              className="project-card relative cursor-pointer"
+              onMouseMove={handleMouseMove}
+              onMouseLeave={handleMouseLeave}
+              style={{ perspective: "1000px" }}
+            >
+              {/* Glow */}
+              <div className="absolute inset-0 bg-accent/20 blur-[40px] opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl" />
 
-              {/* Image */}
-              <div className="parallax-img absolute inset-0">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  priority={project.id === 1}
-                  className="object-cover"
-                />
-              </div>
+              <div className="card-inner relative w-full aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 group bg-zinc-900">
 
-              {/* Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent p-8 flex flex-col justify-end">
-
-                <p className="text-accent text-xs tracking-widest uppercase mb-2">
-                  {project.category}
-                </p>
-
-                <h3 className="font-display text-3xl font-bold text-white mb-6">
-                  {project.title}
-                </h3>
-
-                <div className="flex gap-4 relative z-20">
-
-                  <a
-                    href={project.demoUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 py-3 px-4 bg-white text-black font-semibold text-sm rounded-full flex justify-center items-center hover:bg-accent transition-colors"
-                  >
-                    Live Demo
-                  </a>
-
-                  <a
-                    href={project.codeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 py-3 px-4 bg-black border border-white/20 text-white font-semibold text-sm rounded-full flex justify-center items-center gap-2 hover:border-accent hover:text-accent transition-colors"
-                  >
-                    <Code size={16} />
-                    Code
-                  </a>
-
+                {/* Image */}
+                <div className="parallax-img absolute inset-0">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    priority={project.id === 1}
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
                 </div>
-              </div>
 
+                {/* Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-transparent p-6 flex flex-col justify-end">
+
+                  <p className="text-accent text-[11px] tracking-widest uppercase mb-1.5 font-mono">
+                    {project.category}
+                  </p>
+
+                  <h3 className="font-display text-xl lg:text-2xl font-bold text-white mb-2 line-clamp-1 group-hover:text-accent transition-colors">
+                    {project.title}
+                  </h3>
+
+                  {project.description && (
+                    <p className="text-xs text-gray-300 font-sans line-clamp-2 mb-4 leading-relaxed">
+                      {project.description}
+                    </p>
+                  )}
+
+                  <div className="flex gap-3 relative z-20">
+
+                    <a
+                      href={project.demoUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 py-2.5 px-3 bg-white text-black font-semibold text-xs rounded-full flex justify-center items-center hover:bg-accent transition-colors"
+                    >
+                      Live Demo
+                    </a>
+
+                    <a
+                      href={project.codeUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 py-2.5 px-3 bg-black/80 backdrop-blur-sm border border-white/20 text-white font-semibold text-xs rounded-full flex justify-center items-center gap-1.5 hover:border-accent hover:text-accent transition-colors"
+                    >
+                      <Code size={14} />
+                      Code
+                    </a>
+
+                  </div>
+                </div>
+
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
