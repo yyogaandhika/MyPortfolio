@@ -37,13 +37,13 @@ export default function SiTuahCaseStudy() {
           </div>
 
           <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-6">
-            SI TUAH – Sistem Informasi Terpadu Analitik & Data Sektoral
+            SI TUAH – Integrated Regional Sectoral Data & Analytics
           </h1>
 
           <p className="text-gray-300 font-sans text-lg md:text-xl leading-relaxed max-w-3xl">
-            A centralized digital statistical portal and analytics platform engineered for the 
-            Department of Communication and Informatics (Diskominfo) Kota Dumai, consolidating 
-            multidisciplinary government sectoral data into interactive, real-time public dashboards.
+            A centralized municipal statistical portal and public visual analytics platform engineered for the 
+            Department of Communication and Informatics (Diskominfo) of Dumai City, consolidating 
+            cross-sectoral public indicators into interactive, real-time dashboards.
           </p>
 
           {/* Quick CTA Actions */}

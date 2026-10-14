@@ -3,37 +3,37 @@ import { GitHubRepo } from '@/types';
 
 const repoMetadata: Record<string, { description: string; language?: string; homepage?: string }> = {
   'web-kominfo': {
-    description: 'Sistem Informasi Terpadu Analitik dan Hasil Data Sektoral Kominfo Kota Dumai.',
+    description: 'Integrated regional statistical analytics and sectoral data portal built for Diskominfo Kota Dumai.',
     language: 'React & Vite',
     homepage: 'https://web-kominfo-seven.vercel.app/',
   },
   'edusummarize-website-peringkas-pelajaran-saints': {
-    description: 'Platform edukasi berbasis AI untuk merangkum pelajaran sains otomatis dengan UI modern.',
+    description: 'AI-assisted science curriculum summarization platform with modern reactive UI.',
     language: 'Next.js & AI',
     homepage: 'https://edu-summarize-website-peringkas-pel.vercel.app',
   },
   'product_ml_api': {
-    description: 'Machine Learning REST API untuk analisis & klasifikasi produk terintegrasi web dashboard.',
+    description: 'Machine learning backend REST API microservice paired with an interactive frontend dashboard.',
     language: 'Python & React',
     homepage: 'https://product-ml-api.vercel.app',
   },
   'website-prediksi-next-kategori-item-purchase': {
-    description: 'Model machine learning predictive analytics untuk klasifikasi kategori pembelian item belanja.',
+    description: 'Predictive analytics machine learning model for forecasting consumer next-purchase shopping categories.',
     language: 'Python (ML)',
     homepage: 'https://website-prediksi-next-kategori-item.vercel.app/',
   },
   'website-barang-kedai': {
-    description: 'Aplikasi Point of Sale (POS) & inventaris manajemen toko berbasis React modern.',
+    description: 'Modern Point-of-Sale (POS) and inventory management web application for retail stores.',
     language: 'React & JS',
     homepage: 'https://website-barang-kedai.vercel.app',
   },
   'myportfolio': {
-    description: 'Personal creative portfolio dibangun dengan Next.js, TypeScript, Tailwind, dan animasi GSAP.',
+    description: 'Personal creative portfolio built with Next.js, TypeScript, Tailwind CSS, and fluid GSAP animations.',
     language: 'TypeScript & Next.js',
     homepage: 'https://my-portfolio-gamma-five-58.vercel.app',
   },
   'besitua': {
-    description: 'Web portal dan katalog manajemen pengelolaan material besi bekas / daur ulang barang.',
+    description: 'Web inventory portal and scrap material recycling management catalog application.',
     language: 'PHP & Blade',
   },
 };
@@ -42,7 +42,7 @@ const defaultRepos: GitHubRepo[] = [
   {
     id: 99901,
     name: 'Web-Kominfo',
-    description: 'Sistem Informasi Terpadu Analitik dan Hasil Data Sektoral Kominfo Kota Dumai.',
+    description: 'Integrated regional statistical analytics and sectoral data portal built for Diskominfo Kota Dumai.',
     html_url: 'https://github.com/yyogaandhika/Web-Kominfo.git',
     homepage: 'https://web-kominfo-seven.vercel.app/',
     stargazers_count: 1,
@@ -53,7 +53,7 @@ const defaultRepos: GitHubRepo[] = [
   {
     id: 1293845245,
     name: 'EduSummarize-Website-Peringkas-Pelajaran-Saints',
-    description: 'Platform edukasi berbasis AI untuk merangkum pelajaran sains otomatis dengan UI modern.',
+    description: 'AI-assisted science curriculum summarization platform with modern reactive UI.',
     html_url: 'https://github.com/yyogaandhika/EduSummarize-Website-Peringkas-Pelajaran-Saints',
     homepage: 'https://edu-summarize-website-peringkas-pel.vercel.app',
     stargazers_count: 1,
@@ -64,7 +64,7 @@ const defaultRepos: GitHubRepo[] = [
   {
     id: 1116857981,
     name: 'product_ml_api',
-    description: 'Machine Learning REST API untuk analisis & klasifikasi produk terintegrasi web dashboard.',
+    description: 'Machine learning backend REST API microservice paired with an interactive frontend dashboard.',
     html_url: 'https://github.com/yyogaandhika/product_ml_api',
     homepage: 'https://product-ml-api.vercel.app',
     stargazers_count: 1,
@@ -75,7 +75,7 @@ const defaultRepos: GitHubRepo[] = [
   {
     id: 1272393673,
     name: 'Website-Prediksi-Next-Kategori-Item-Purchase',
-    description: 'Model machine learning predictive analytics untuk klasifikasi kategori pembelian item belanja.',
+    description: 'Predictive analytics machine learning model for forecasting consumer next-purchase shopping categories.',
     html_url: 'https://github.com/yyogaandhika/Website-Prediksi-Next-Kategori-Item-Purchase',
     homepage: 'https://website-prediksi-next-kategori-item.vercel.app/',
     stargazers_count: 1,
@@ -86,7 +86,7 @@ const defaultRepos: GitHubRepo[] = [
   {
     id: 1333746287,
     name: 'Website-Barang-Kedai',
-    description: 'Aplikasi Point of Sale (POS) & inventaris manajemen toko berbasis React modern.',
+    description: 'Modern Point-of-Sale (POS) and inventory management web application for retail stores.',
     html_url: 'https://github.com/yyogaandhika/Website-Barang-Kedai',
     homepage: 'https://website-barang-kedai.vercel.app',
     stargazers_count: 1,
@@ -97,7 +97,7 @@ const defaultRepos: GitHubRepo[] = [
   {
     id: 1296062237,
     name: 'MyPortfolio',
-    description: 'Personal creative portfolio dibangun dengan Next.js, TypeScript, Tailwind, dan animasi GSAP.',
+    description: 'Personal creative portfolio built with Next.js, TypeScript, Tailwind CSS, and fluid GSAP animations.',
     html_url: 'https://github.com/yyogaandhika/MyPortfolio',
     homepage: 'https://my-portfolio-gamma-five-58.vercel.app',
     stargazers_count: 1,
@@ -108,7 +108,7 @@ const defaultRepos: GitHubRepo[] = [
   {
     id: 947929128,
     name: 'BesiTua',
-    description: 'Web portal dan katalog manajemen pengelolaan material besi bekas / daur ulang barang.',
+    description: 'Web inventory portal and scrap material recycling management catalog application.',
     html_url: 'https://github.com/yyogaandhika/BesiTua',
     homepage: null,
     stargazers_count: 1,
