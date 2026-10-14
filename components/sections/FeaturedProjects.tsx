@@ -119,7 +119,7 @@ export default function FeaturedProjects() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project) => (
+          {projects.map((project, idx) => (
             <div
               key={project.id}
               className="project-card relative cursor-pointer"
@@ -139,7 +139,7 @@ export default function FeaturedProjects() {
                     alt={project.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    priority={project.id <= 2}
+                    priority={idx < 2}
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
