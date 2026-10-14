@@ -118,7 +118,7 @@ export default function FeaturedProjects() {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {projects.map((project) => (
             <div
               key={project.id}
@@ -130,7 +130,7 @@ export default function FeaturedProjects() {
               {/* Glow */}
               <div className="absolute inset-0 bg-accent/20 blur-[40px] opacity-0 hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl" />
 
-              <div className="card-inner relative w-full aspect-[4/3] overflow-hidden rounded-2xl border border-white/10 group bg-zinc-900">
+              <div className="card-inner relative w-full aspect-[16/10] overflow-hidden rounded-2xl border border-white/10 group bg-zinc-900">
 
                 {/* Image */}
                 <div className="parallax-img absolute inset-0">
@@ -138,8 +138,8 @@ export default function FeaturedProjects() {
                     src={project.image}
                     alt={project.title}
                     fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    priority={project.id === 1}
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    priority={project.id <= 2}
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>

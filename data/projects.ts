@@ -28,4 +28,13 @@ export const projects: Project[] = [
     codeUrl: "https://github.com/yyogaandhika/Web-Kominfo.git",
     description: "Sistem Informasi Terpadu Analitik dan Hasil Data Sektoral Kominfo Kota Dumai, menyajikan dashboard data statistik terpusat bagi publik dan instansi pemerintahan.",
   },
+  {
+    id: 4,
+    title: "Next-Category Item Prediction",
+    category: "Python & Machine Learning",
+    image: "/NextItemPurchase.png",
+    demoUrl: "https://website-prediksi-next-kategori-item.vercel.app/",
+    codeUrl: "https://github.com/yyogaandhika/Website-Prediksi-Next-Kategori-Item-Purchase",
+    description: "Aplikasi predictive analytics bertenaga Machine Learning untuk memprediksi kategori belanja berikutnya berdasarkan pola dan riwayat transaksi konsumen.",
+  },
 ];
