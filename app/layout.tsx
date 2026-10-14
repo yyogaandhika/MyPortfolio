@@ -17,8 +17,13 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Yoga Andhika | Frontend & Creative Developer",
-  description: "Personal portfolio of Mhd. Yoga Andhika — Frontend & Creative Developer crafting interactive web applications with Next.js, GSAP, and Machine Learning integrations.",
+  metadataBase: new URL("https://my-portfolio-gamma-five-58.vercel.app"),
+  title: {
+    default: "Yoga Andhika | Frontend & Creative Developer",
+    template: "%s | Yoga Andhika",
+  },
+  description:
+    "Personal portfolio of Mhd. Yoga Andhika — Frontend & Creative Developer crafting interactive web applications with Next.js, GSAP, and Machine Learning integrations.",
   keywords: [
     "Mhd. Yoga Andhika",
     "Yoga Andhika",
@@ -29,8 +34,28 @@ export const metadata: Metadata = {
     "GSAP",
     "Machine Learning",
     "Web Developer Indonesia",
+    "Diskominfo Dumai",
+    "SI TUAH",
   ],
   authors: [{ name: "Mhd. Yoga Andhika" }],
+  openGraph: {
+    title: "Yoga Andhika | Frontend & Creative Developer",
+    description:
+      "Crafting fluid web experiences with Next.js & GSAP, bridging thoughtful user interfaces with Machine Learning systems.",
+    url: "https://my-portfolio-gamma-five-58.vercel.app",
+    siteName: "Yoga Andhika Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Yoga Andhika | Frontend & Creative Developer",
+    description:
+      "Crafting fluid web experiences with Next.js & GSAP, bridging thoughtful user interfaces with Machine Learning systems.",
+  },
+  icons: {
+    icon: "/icon.svg",
+  },
 };
 
 export default function RootLayout({

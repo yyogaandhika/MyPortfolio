@@ -1,11 +1,17 @@
 export interface Project {
   id: number | string;
+  slug?: string;
   title: string;
   category: string;
+  role?: string;
+  year?: string;
   image: string;
   demoUrl: string;
   codeUrl: string;
-  description?: string;
+  description: string;
+  techStack?: string[];
+  impact?: string;
+  hasCaseStudy?: boolean;
 }
 
 export interface GitHubRepo {

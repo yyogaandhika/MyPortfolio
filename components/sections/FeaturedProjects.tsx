@@ -16,16 +16,20 @@ export default function FeaturedProjects() {
   const container = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
     const ctx = gsap.context(() => {
       gsap.from(".project-card", {
         scrollTrigger: {
           trigger: container.current,
           start: "top 80%",
         },
-        y: 100,
+        y: 80,
         opacity: 0,
         stagger: 0.15,
-        duration: 1,
+        duration: 0.9,
         ease: "power3.out",
       });
     }, container);
@@ -36,6 +40,10 @@ export default function FeaturedProjects() {
   const handleMouseMove = (
     e: React.MouseEvent<HTMLDivElement>
   ) => {
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
     const card = e.currentTarget;
     const rect = card.getBoundingClientRect();
 
@@ -47,8 +55,8 @@ export default function FeaturedProjects() {
 
     if (inner) {
       gsap.to(inner, {
-        rotateY: (x / rect.width) * 14,
-        rotateX: -(y / rect.height) * 14,
+        rotateY: (x / rect.width) * 12,
+        rotateX: -(y / rect.height) * 12,
         duration: 0.35,
         ease: "power2.out",
         overwrite: "auto",
@@ -57,8 +65,8 @@ export default function FeaturedProjects() {
 
     if (img) {
       gsap.to(img, {
-        x: (x / rect.width) * 10,
-        y: (y / rect.height) * 10,
+        x: (x / rect.width) * 8,
+        y: (y / rect.height) * 8,
         duration: 0.35,
         ease: "power2.out",
         overwrite: "auto",
@@ -119,7 +127,7 @@ export default function FeaturedProjects() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {projects.map((project, idx) => (
+          {projects.map((project) => (
             <div
               key={project.id}
               className="project-card relative cursor-pointer"
@@ -139,35 +147,62 @@ export default function FeaturedProjects() {
                     alt={project.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    priority={idx < 2}
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/45 to-transparent p-6 flex flex-col justify-end">
-
-                  <p className="text-accent text-[11px] tracking-widest uppercase mb-1.5 font-mono">
-                    {project.category}
-                  </p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-transparent p-6 flex flex-col justify-end">
+                  
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <span className="text-accent text-[11px] tracking-widest uppercase font-mono">
+                      {project.category}
+                    </span>
+                    {project.role && (
+                      <span className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/10 text-gray-300 border border-white/10">
+                        {project.role}
+                      </span>
+                    )}
+                  </div>
 
                   <h3 className="font-display text-xl lg:text-2xl font-bold text-white mb-2 line-clamp-1 group-hover:text-accent transition-colors">
                     {project.title}
                   </h3>
 
-                  {project.description && (
-                    <p className="text-xs text-gray-300 font-sans line-clamp-2 mb-4 leading-relaxed">
-                      {project.description}
-                    </p>
+                  <p className="text-xs text-gray-300 font-sans line-clamp-2 mb-3 leading-relaxed">
+                    {project.description}
+                  </p>
+
+                  {/* Tech stack pills */}
+                  {project.techStack && (
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {project.techStack.slice(0, 4).map((tech) => (
+                        <span
+                          key={tech}
+                          className="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-900/90 text-gray-300 border border-white/10"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   )}
 
-                  <div className="flex gap-3 relative z-20">
+                  <div className="flex items-center gap-2.5 relative z-20">
+                    {project.hasCaseStudy && project.slug && (
+                      <Link
+                        href={`/work/${project.slug}`}
+                        className="py-2 px-3.5 bg-accent text-black font-semibold text-xs rounded-full flex items-center gap-1 hover:bg-white transition-colors"
+                      >
+                        <span>Case Study</span>
+                        <ArrowUpRight size={13} />
+                      </Link>
+                    )}
 
                     <a
                       href={project.demoUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 py-2.5 px-3 bg-white text-black font-semibold text-xs rounded-full flex justify-center items-center hover:bg-accent transition-colors"
+                      className="flex-1 py-2 px-3 bg-white/10 border border-white/20 text-white font-semibold text-xs rounded-full flex justify-center items-center hover:bg-white hover:text-black transition-colors"
                     >
                       Live Demo
                     </a>
@@ -176,12 +211,12 @@ export default function FeaturedProjects() {
                       href={project.codeUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 py-2.5 px-3 bg-black/80 backdrop-blur-sm border border-white/20 text-white font-semibold text-xs rounded-full flex justify-center items-center gap-1.5 hover:border-accent hover:text-accent transition-colors"
+                      className="p-2 bg-black/80 border border-white/20 text-white rounded-full flex items-center justify-center hover:border-accent hover:text-accent transition-colors"
+                      title="View Source Code"
+                      aria-label="View Source Code"
                     >
                       <Code size={14} />
-                      Code
                     </a>
-
                   </div>
                 </div>
 

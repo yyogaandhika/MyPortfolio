@@ -9,6 +9,10 @@ export default function Hero() {
   const container = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      return;
+    }
+
     const ctx = gsap.context(() => {
       gsap.from(".reveal-text", {
         yPercent: 130,
