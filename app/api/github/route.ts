@@ -35,7 +35,7 @@ const repoMetadata: Record<string, { description: string; language?: string; hom
   'myportfolio': {
     description: 'Personal creative portfolio built with Next.js, TypeScript, Tailwind CSS, and fluid GSAP animations.',
     language: 'TypeScript & Next.js',
-    homepage: 'https://my-portfolio-gamma-five-58.vercel.app',
+    homepage: 'https://yogaportfolio.vercel.app',
   },
   'besitua': {
     description: 'Web inventory portal and scrap material recycling management catalog application.',
@@ -115,7 +115,7 @@ const defaultRepos: GitHubRepo[] = [
     name: 'MyPortfolio',
     description: 'Personal creative portfolio built with Next.js, TypeScript, Tailwind CSS, and fluid GSAP animations.',
     html_url: 'https://github.com/yyogaandhika/MyPortfolio',
-    homepage: 'https://my-portfolio-gamma-five-58.vercel.app',
+    homepage: 'https://yogaportfolio.vercel.app',
     stargazers_count: 1,
     language: 'TypeScript & Next.js',
     created_at: '2026-07-10T04:51:30Z',

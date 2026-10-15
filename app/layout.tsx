@@ -17,7 +17,7 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://my-portfolio-gamma-five-58.vercel.app"),
+  metadataBase: new URL("https://yogaportfolio.vercel.app"),
   title: {
     default: "Yoga Andhika | Frontend & Creative Developer",
     template: "%s | Yoga Andhika",
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     title: "Yoga Andhika | Frontend & Creative Developer",
     description:
       "Crafting fluid web experiences with Next.js & GSAP, bridging thoughtful user interfaces with Machine Learning systems.",
-    url: "https://my-portfolio-gamma-five-58.vercel.app",
+    url: "https://yogaportfolio.vercel.app",
     siteName: "Yoga Andhika Portfolio",
     locale: "en_US",
     type: "website",
