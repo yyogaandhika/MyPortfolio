@@ -3,6 +3,22 @@ import { Project } from "@/types";
 export const projects: Project[] = [
   {
     id: 1,
+    slug: "showcase-studio",
+    title: "Showcase Studio – 3D Mockup Generator",
+    category: "Creative Dev & 3D WebGL",
+    role: "Creator & Frontend 3D Engineer",
+    year: "2026",
+    image: "/ShowcaseStudio.png",
+    demoUrl: "https://show-case-studio.vercel.app",
+    codeUrl: "https://github.com/yyogaandhika/ShowCase-Studio.git",
+    description:
+      "Interactive 3D product showcase and device mockup studio with real-time WebGL rendering, customizable camera orbits, multi-shot timeline animations, and browser-based video/GIF export.",
+    techStack: ["React", "Three.js", "TypeScript", "Tailwind CSS", "Zustand", "WebCodecs"],
+    impact: "Enables designers and developers to create studio-grade 3D product animations and device mockups directly in the browser without 3D desktop software.",
+    hasCaseStudy: true,
+  },
+  {
+    id: 2,
     slug: "si-tuah",
     title: "SI TUAH – Diskominfo Kota Dumai",
     category: "Government Analytics Portal",
@@ -18,7 +34,7 @@ export const projects: Project[] = [
     hasCaseStudy: true,
   },
   {
-    id: 2,
+    id: 3,
     slug: "edusummarize",
     title: "EduSummarize Platform",
     category: "AI & Educational Tech",
@@ -34,7 +50,7 @@ export const projects: Project[] = [
     hasCaseStudy: true,
   },
   {
-    id: 3,
+    id: 4,
     slug: "next-item-prediction",
     title: "Next-Category Item Prediction",
     category: "Machine Learning & Analytics",
@@ -50,7 +66,7 @@ export const projects: Project[] = [
     hasCaseStudy: true,
   },
   {
-    id: 4,
+    id: 5,
     slug: "product-ml-api",
     title: "Product ML API & Dashboard",
     category: "Backend API & ML System",

@@ -2,6 +2,11 @@ import { NextResponse } from 'next/server';
 import { GitHubRepo } from '@/types';
 
 const repoMetadata: Record<string, { description: string; language?: string; homepage?: string }> = {
+  'showcase-studio': {
+    description: 'Interactive 3D product mockup generator and animation suite built with Three.js, React, and WebCodecs.',
+    language: 'Three.js & React 3D',
+    homepage: 'https://show-case-studio.vercel.app',
+  },
   'web-kominfo': {
     description: 'Integrated regional statistical analytics and sectoral data portal built for Diskominfo Kota Dumai.',
     language: 'React & Vite',
@@ -39,6 +44,17 @@ const repoMetadata: Record<string, { description: string; language?: string; hom
 };
 
 const defaultRepos: GitHubRepo[] = [
+  {
+    id: 1458923011,
+    name: 'ShowCase-Studio',
+    description: 'Interactive 3D product mockup generator and animation suite built with Three.js, React, and WebCodecs.',
+    html_url: 'https://github.com/yyogaandhika/ShowCase-Studio.git',
+    homepage: 'https://show-case-studio.vercel.app',
+    stargazers_count: 1,
+    language: 'Three.js & React 3D',
+    created_at: '2026-10-15T10:31:40Z',
+    updated_at: '2026-10-15T10:38:49Z',
+  },
   {
     id: 99901,
     name: 'Web-Kominfo',

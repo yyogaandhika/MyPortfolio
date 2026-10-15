@@ -38,6 +38,7 @@
 
 | Project | Domain | Stack | Links |
 | :--- | :--- | :--- | :--- |
+| **Showcase Studio** | 3D WebGL & Mockup Studio | `Three.js` `React` `Tailwind` `WebCodecs` | [🌐 Live Studio](https://show-case-studio.vercel.app) • [💻 Source](https://github.com/yyogaandhika/ShowCase-Studio.git) • [📖 Case Study](https://my-portfolio-gamma-five-58.vercel.app/work/showcase-studio) |
 | **SI TUAH (Diskominfo Dumai)** | Government Data Portal | `React` `Vite` `Tailwind` `Chart.js` | [🌐 Live Demo](https://web-kominfo-seven.vercel.app/) • [💻 Source](https://github.com/yyogaandhika/Web-Kominfo.git) • [📖 Case Study](https://my-portfolio-gamma-five-58.vercel.app/work/si-tuah) |
 | **EduSummarize Platform** | AI & EdTech | `Next.js` `TypeScript` `AI NLP` `Tailwind` | [🌐 Live Demo](https://edu-summarize-website-peringkas-pel.vercel.app/) • [💻 Source](https://github.com/yyogaandhika/EduSummarize-Website-Peringkas-Pelajaran-Saints.git) |
 | **Next-Category Item Prediction** | Predictive Analytics | `Python` `Scikit-Learn` `Streamlit` | [🌐 Live Demo](https://website-prediksi-next-kategori-item.vercel.app/) • [💻 Source](https://github.com/yyogaandhika/Website-Prediksi-Next-Kategori-Item-Purchase) |
@@ -62,6 +63,7 @@
 #### 🎨 Frontend & Creative Motion
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 ![Next JS](https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white)
+![Three.js](https://img.shields.io/badge/threejs-black?style=for-the-badge&logo=three.js&logoColor=white)
 ![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)

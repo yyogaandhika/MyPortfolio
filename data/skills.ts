@@ -7,6 +7,7 @@ export const techStack: TechItem[] = [
   // Frontend & Creative
   { name: "React", category: "frontend" },
   { name: "Next.js", category: "frontend" },
+  { name: "Three.js", category: "frontend" },
   { name: "TypeScript", category: "frontend" },
   { name: "JavaScript", category: "frontend" },
   { name: "Tailwind CSS", category: "frontend" },
@@ -31,6 +32,7 @@ export const technologies: string[] = techStack.map((t) => t.name);
 export const marqueeSkills: string[] = [
   "Frontend Engineering",
   "Creative Coding",
+  "Three.js & WebGL 3D",
   "Next.js & React",
   "GSAP Motion",
   "Machine Learning Integration",
