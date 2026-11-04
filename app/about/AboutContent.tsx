@@ -179,8 +179,20 @@ export default function AboutContent() {
                     {item.company}
                   </p>
                   <p className="text-gray-400 font-sans text-xs md:text-sm mt-2 leading-relaxed">
-                    {item.desc}
+                    {item.description}
                   </p>
+                  {item.highlights && item.highlights.length > 0 && (
+                    <ul className="mt-2.5 flex flex-col gap-1.5 pl-4 list-disc marker:text-accent/70">
+                      {item.highlights.map((point, pIdx) => (
+                        <li
+                          key={pIdx}
+                          className="text-gray-400 font-sans text-xs leading-relaxed"
+                        >
+                          {point}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               ))}
             </div>
