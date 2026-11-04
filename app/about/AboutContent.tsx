@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { FileDown } from "lucide-react";
 import { experiences } from "@/data/experiences";
 import { contactDetails } from "@/data/contact";
 import { SocialIcon } from "@/components/icons";
@@ -13,7 +14,10 @@ export default function AboutContent() {
   const container = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
       return;
     }
 
@@ -69,24 +73,40 @@ export default function AboutContent() {
             {/* Location & Status Badge */}
             <div className="absolute bottom-6 left-6 right-6 flex justify-between items-end">
               <div>
-                <p className="font-display font-bold text-white text-base">{contactDetails.name}</p>
-                <p className="font-mono text-xs text-accent">{contactDetails.location}</p>
+                <p className="font-display font-bold text-white text-base">
+                  {contactDetails.name}
+                </p>
+                <p className="font-mono text-xs text-accent">
+                  {contactDetails.location}
+                </p>
               </div>
               <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/60 border border-white/10 backdrop-blur-sm">
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span className="font-mono text-[11px] text-gray-300">{contactDetails.availability}</span>
+                <span className="font-mono text-[11px] text-gray-300">
+                  {contactDetails.availability}
+                </span>
               </div>
             </div>
           </div>
 
-          {/* Action Button & Socials */}
-          <div className="mt-8 flex flex-col gap-5 fade-up">
-            <Link
-              href="/contact"
-              className="w-full py-3.5 px-6 bg-white text-black font-semibold text-xs uppercase tracking-widest rounded-full text-center hover:bg-accent transition-colors"
-            >
-              Get In Touch
-            </Link>
+          {/* Action Buttons & Socials */}
+          <div className="mt-8 flex flex-col gap-4 fade-up">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <Link
+                href="/contact"
+                className="w-full py-3.5 px-6 bg-white text-black font-semibold text-xs uppercase tracking-widest rounded-full text-center hover:bg-accent transition-colors"
+              >
+                Get In Touch
+              </Link>
+              <a
+                href={contactDetails.cvUrl}
+                download="CV_Mhd_Yoga_Andhika.pdf"
+                className="w-full py-3.5 px-6 bg-white/5 border border-white/15 text-white font-semibold text-xs uppercase tracking-widest rounded-full text-center hover:bg-accent hover:text-black hover:border-accent transition-colors flex items-center justify-center gap-2"
+              >
+                <FileDown size={15} />
+                <span>Download CV</span>
+              </a>
+            </div>
 
             <div className="flex items-center justify-between pt-2">
               <span className="text-xs uppercase tracking-widest text-accent font-semibold font-mono">
@@ -118,7 +138,10 @@ export default function AboutContent() {
               Philosophy
             </h3>
             <p className="font-sans text-xl md:text-2xl font-light text-gray-300 leading-relaxed">
-              I believe compelling digital products exist at the intersection of solid engineering and purposeful interaction. Rather than building static interfaces, I craft web applications that feel fluid, responsive, and genuinely enjoyable to use.
+              I believe compelling digital products exist at the intersection of
+              solid engineering and purposeful interaction. Rather than building
+              static interfaces, I craft web applications that feel fluid,
+              responsive, and genuinely enjoyable to use.
             </p>
           </div>
 
@@ -127,42 +150,40 @@ export default function AboutContent() {
               Background
             </h3>
             <p className="font-sans text-base md:text-lg text-gray-400 leading-relaxed">
-              Currently pursuing Informatics Engineering at Politeknik Caltex Riau, I specialize in modern frontend engineering using React, Next.js, and GSAP animations. Alongside frontend craft, I actively explore Machine Learning—developing models, RESTful APIs, and connecting intelligent systems to interactive web interfaces.
+              Currently pursuing a Bachelor of Applied Science (D4) in
+              Informatics Engineering at Politeknik Caltex Riau (GPA 3.21/4.00),
+              I specialize in modern frontend engineering using React, Next.js,
+              Three.js, and GSAP animations. Alongside frontend craft, I
+              actively engineer Machine Learning pipelines, RESTful APIs, and
+              AI-integrated web platforms.
             </p>
           </div>
 
-          <div className="fade-up pt-8 border-t border-white/10">
+          <div className="fade-up border-t border-border pt-12">
             <h3 className="text-accent text-sm tracking-widest uppercase font-semibold mb-8">
               Experience & Education
             </h3>
 
-            <ul className="flex flex-col gap-8">
-              {experiences.map((job, idx) => (
-                <li
-                  key={idx}
-                  className="border-b border-white/5 pb-6 last:border-b-0"
-                >
-                  <div className="flex justify-between items-baseline mb-2">
-                    <h4 className="text-xl font-display font-semibold text-white">
-                      {job.role}
+            <div className="flex flex-col gap-10">
+              {experiences.map((item, idx) => (
+                <div key={idx} className="flex flex-col gap-1 group">
+                  <div className="flex justify-between items-baseline gap-4">
+                    <h4 className="font-display text-xl md:text-2xl font-bold text-white group-hover:text-accent transition-colors">
+                      {item.role}
                     </h4>
-                    <span className="text-xs font-mono text-accent">
-                      {job.year}
+                    <span className="font-mono text-xs text-accent shrink-0">
+                      {item.year}
                     </span>
                   </div>
-
-                  <p className="text-sm font-medium text-gray-300 mb-2">
-                    {job.company}
+                  <p className="text-gray-400 font-sans text-sm">
+                    {item.company}
                   </p>
-
-                  {job.description && (
-                    <p className="text-sm text-gray-400 font-sans leading-relaxed">
-                      {job.description}
-                    </p>
-                  )}
-                </li>
+                  <p className="text-gray-400 font-sans text-xs md:text-sm mt-2 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
               ))}
-            </ul>
+            </div>
           </div>
         </div>
       </div>

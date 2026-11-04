@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, Code, CheckCircle2, TrendingUp, Cpu, Binary, LineChart } from "lucide-react";
+import CaseStudyFooterNav from "@/components/ui/CaseStudyFooterNav";
 
 export const metadata: Metadata = {
   title: "Case Study: Next-Category Item Prediction | Yoga Andhika",
@@ -75,7 +76,7 @@ export default function NextItemPredictionCaseStudy() {
             src="/NextItemPurchase.png"
             alt="Next-Category Item Prediction Application"
             fill
-            sizes="(max-width: 1200px) 100vw, 1100px"
+            sizes="(max-width: 1200px) 100vw, 1120px"
             className="object-cover"
             priority
           />
@@ -116,7 +117,7 @@ export default function NextItemPredictionCaseStudy() {
               <span className="p-2 rounded-lg bg-accent/10 text-accent"><TrendingUp size={20} /></span>
               <span>The Problem & Context</span>
             </h2>
-            <div className="text-gray-300 leading-relaxed space-y-4 text-base md:text-lg font-light">
+            <div className="text-gray-300 leading-relaxed space-y-4 text-base md:text-lg font-light max-w-4xl">
               <p>
                 In modern e-commerce, conventional recommendation engines often rely on broad collaborative 
                 filtering or static product associations. They fail to exploit chronological order—neglecting 
@@ -240,24 +241,7 @@ export default function NextItemPredictionCaseStudy() {
             </div>
           </section>
 
-          {/* Footer Navigation */}
-          <div className="border-t border-white/10 pt-12 flex justify-between items-center">
-            <Link
-              href="/work"
-              className="text-xs font-mono uppercase tracking-widest text-gray-400 hover:text-accent transition-colors flex items-center gap-2"
-            >
-              <ArrowLeft size={14} />
-              <span>Back to All Works</span>
-            </Link>
-
-            <Link
-              href="/contact"
-              className="py-3 px-6 bg-accent text-black font-semibold text-xs md:text-sm rounded-full hover:bg-white transition-colors"
-            >
-              Hire Me for ML & Web
-            </Link>
-          </div>
-
+          <CaseStudyFooterNav currentSlug="next-item-prediction" />
         </div>
       </div>
     </main>

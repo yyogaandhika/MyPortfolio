@@ -5,38 +5,42 @@ export interface TechItem {
 
 export const techStack: TechItem[] = [
   // Frontend & Creative
-  { name: "React", category: "frontend" },
-  { name: "Next.js", category: "frontend" },
-  { name: "Three.js", category: "frontend" },
+  { name: "Next.js 16", category: "frontend" },
+  { name: "React 19", category: "frontend" },
   { name: "TypeScript", category: "frontend" },
-  { name: "JavaScript", category: "frontend" },
+  { name: "JavaScript (ES6+)", category: "frontend" },
   { name: "Tailwind CSS", category: "frontend" },
-  { name: "GSAP", category: "frontend" },
+  { name: "GSAP ScrollTrigger", category: "frontend" },
+  { name: "Three.js & WebGL", category: "frontend" },
   { name: "Framer Motion", category: "frontend" },
+  { name: "Lenis Smooth Scroll", category: "frontend" },
 
-  // Machine Learning & Data
+  // Machine Learning & AI Workflow
   { name: "Python", category: "ml" },
-  { name: "FastAPI", category: "ml" },
-  { name: "Machine Learning", category: "ml" },
   { name: "Scikit-Learn", category: "ml" },
+  { name: "Machine Learning", category: "ml" },
+  { name: "LLM Function Calling", category: "ml" },
+  { name: "AI-Assisted Dev", category: "ml" },
 
-  // Backend & Tools
-  { name: "Node.js", category: "backend" },
-  { name: "PostgreSQL", category: "backend" },
-  { name: "REST APIs", category: "backend" },
-  { name: "Git & GitHub", category: "backend" },
+  // Backend, Database & Tools
+  { name: "FastAPI & Flask", category: "backend" },
+  { name: "Supabase (Auth & RLS)", category: "backend" },
+  { name: "PostgreSQL & SQLite", category: "backend" },
+  { name: "RESTful APIs", category: "backend" },
+  { name: "Laravel & Django", category: "backend" },
+  { name: "Git, Linux & Vercel", category: "backend" },
 ];
 
 export const technologies: string[] = techStack.map((t) => t.name);
 
 export const marqueeSkills: string[] = [
-  "Frontend Engineering",
+  "Full-Stack Engineering",
   "Creative Coding",
   "Three.js & WebGL 3D",
-  "Next.js & React",
+  "Next.js & TypeScript",
   "GSAP Motion",
-  "Machine Learning Integration",
-  "UI/UX Craft",
+  "Machine Learning APIs",
+  "Supabase & PostgreSQL",
   "FastAPI & Python",
-  "RESTful Architecture",
+  "UI/UX Craft",
 ];

@@ -10,29 +10,40 @@ export default function Navigation() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-40 p-6 mix-blend-difference flex justify-between items-center">
-      <Link href="/" className="font-display font-bold text-2xl uppercase tracking-tighter text-white">
+      <Link
+        href="/"
+        className="font-display font-bold text-2xl uppercase tracking-tighter text-white"
+      >
         Yoga<span className="text-accent">.</span>
       </Link>
-      
+
       <nav className="flex gap-8">
-        {navLinks.map((link) => (
-          <Link
-            key={link.href}
-            href={link.href}
-            className={cn(
-              "text-xs md:text-sm font-medium tracking-widest uppercase transition-colors hover:text-accent relative group text-white",
-              pathname === link.href && "text-accent"
-            )}
-          >
-            {link.label}
-            <span 
+        {navLinks.map((link) => {
+          const isActive =
+            pathname === link.href ||
+            (link.href !== "/" && pathname.startsWith(link.href));
+
+          return (
+            <Link
+              key={link.href}
+              href={link.href}
               className={cn(
-                "absolute -bottom-2 left-0 w-full h-[1px] bg-accent transform origin-left transition-transform duration-300",
-                pathname === link.href ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                "text-xs md:text-sm font-medium tracking-widest uppercase transition-colors hover:text-accent relative group text-white",
+                isActive && "text-accent"
               )}
-            />
-          </Link>
-        ))}
+            >
+              {link.label}
+              <span
+                className={cn(
+                  "absolute -bottom-2 left-0 w-full h-[1px] bg-accent transform origin-left transition-transform duration-300",
+                  isActive
+                    ? "scale-x-100"
+                    : "scale-x-0 group-hover:scale-x-100"
+                )}
+              />
+            </Link>
+          );
+        })}
       </nav>
     </header>
   );

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowUpRight, Code, CheckCircle2, Layers, Cpu, BarChart3, ShieldCheck } from "lucide-react";
+import CaseStudyFooterNav from "@/components/ui/CaseStudyFooterNav";
 
 export const metadata: Metadata = {
   title: "Case Study: SI TUAH – Diskominfo Kota Dumai | Yoga Andhika",
@@ -75,7 +76,7 @@ export default function SiTuahCaseStudy() {
             src="/Kominfo.jpeg"
             alt="SI TUAH Diskominfo Kota Dumai Portal Preview"
             fill
-            sizes="(max-width: 1200px) 100vw, 1100px"
+            sizes="(max-width: 1200px) 100vw, 1120px"
             className="object-cover"
             priority
           />
@@ -116,7 +117,7 @@ export default function SiTuahCaseStudy() {
               <span className="p-2 rounded-lg bg-accent/10 text-accent"><Layers size={20} /></span>
               <span>The Problem & Context</span>
             </h2>
-            <div className="text-gray-300 leading-relaxed space-y-4 text-base md:text-lg font-light">
+            <div className="text-gray-300 leading-relaxed space-y-4 text-base md:text-lg font-light max-w-4xl">
               <p>
                 Regional municipal agencies across Dumai previously managed statistical and sectoral 
                 indicators across scattered spreadsheets and disconnected departmental archives. 
@@ -241,24 +242,7 @@ export default function SiTuahCaseStudy() {
             </div>
           </section>
 
-          {/* Footer Navigation */}
-          <div className="border-t border-white/10 pt-12 flex justify-between items-center">
-            <Link
-              href="/work"
-              className="text-xs font-mono uppercase tracking-widest text-gray-400 hover:text-accent transition-colors flex items-center gap-2"
-            >
-              <ArrowLeft size={14} />
-              <span>Back to Portfolio</span>
-            </Link>
-
-            <Link
-              href="/contact"
-              className="py-3 px-6 bg-accent text-black font-semibold text-xs md:text-sm rounded-full hover:bg-white transition-colors"
-            >
-              Discuss a Project with Me
-            </Link>
-          </div>
-
+          <CaseStudyFooterNav currentSlug="si-tuah" />
         </div>
       </div>
     </main>

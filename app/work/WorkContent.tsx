@@ -31,7 +31,10 @@ export default function WorkContent() {
   }, []);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
       return;
     }
 
@@ -61,7 +64,8 @@ export default function WorkContent() {
     return repos.filter((repo) => {
       const matchesSearch =
         repo.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (repo.description && repo.description.toLowerCase().includes(searchQuery.toLowerCase()));
+        (repo.description &&
+          repo.description.toLowerCase().includes(searchQuery.toLowerCase()));
       const matchesLang =
         selectedLanguage === "All" || repo.language === selectedLanguage;
       return matchesSearch && matchesLang;
@@ -69,9 +73,11 @@ export default function WorkContent() {
   }, [repos, searchQuery, selectedLanguage]);
 
   return (
-    <main ref={container} className="min-h-screen pt-32 pb-24 px-6 md:px-12 lg:px-24">
+    <main
+      ref={container}
+      className="min-h-screen pt-32 pb-24 px-6 md:px-12 lg:px-24"
+    >
       <div className="max-w-7xl mx-auto flex flex-col gap-24">
-        
         {/* Header */}
         <div>
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-accent font-mono text-xs mb-4">
@@ -85,8 +91,9 @@ export default function WorkContent() {
           </h1>
 
           <p className="mt-6 text-gray-400 font-sans text-base md:text-xl max-w-2xl leading-relaxed">
-            A comprehensive index of government analytics systems, AI-powered web tools, 
-            machine learning models, and open-source software engineering experiments.
+            A comprehensive index of government analytics systems, AI-powered
+            web tools, machine learning models, and open-source software
+            engineering experiments.
           </p>
         </div>
 
@@ -98,47 +105,67 @@ export default function WorkContent() {
                 <span>Featured Solutions</span>
               </h2>
               <p className="text-xs md:text-sm text-gray-400 font-sans mt-1">
-                Real-world client deployments and production-grade architectures.
+                Real-world client deployments and production-grade
+                architectures.
               </p>
             </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {projects.map((project) => (
-              <div
-                key={project.id}
-                className="group relative rounded-2xl overflow-hidden border border-white/10 bg-zinc-950 flex flex-col hover:border-accent transition-all duration-300"
-              >
-                {/* Image */}
-                <div className="relative w-full aspect-[16/10] overflow-hidden bg-zinc-900">
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-90" />
-                  
-                  <div className="absolute top-3 left-3 right-3 flex justify-between items-center">
-                    <span className="px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-md text-[11px] font-mono text-accent border border-white/10">
-                      {project.category}
-                    </span>
-                    {project.role && (
-                      <span className="px-2.5 py-1 rounded-md bg-zinc-900/90 backdrop-blur-md text-[10px] font-mono text-gray-300 border border-white/10">
-                        {project.role}
-                      </span>
-                    )}
-                  </div>
-                </div>
+            {projects.map((project, index) => {
+              const isFlagship = index === 0;
 
-                {/* Content */}
-                <div className="p-6 flex flex-col flex-1 justify-between gap-5">
+              return (
+                <div
+                  key={project.id}
+                  className={`group relative rounded-2xl overflow-hidden border border-white/10 bg-zinc-950 flex flex-col hover:border-accent transition-all duration-300 ${
+                    isFlagship ? "md:col-span-2 lg:grid lg:grid-cols-12" : ""
+                  }`}
+                >
+                  {/* Image */}
+                  <div
+                    className={`relative w-full overflow-hidden bg-zinc-900 ${
+                      isFlagship
+                        ? "lg:col-span-7 aspect-[16/10] lg:aspect-auto lg:min-h-[360px]"
+                        : "aspect-[16/10]"
+                    }`}
+                  >
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      sizes={
+                        isFlagship
+                          ? "(max-width: 1024px) 100vw, 60vw"
+                          : "(max-width: 768px) 100vw, 50vw"
+                      }
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-90" />
+
+                    <div className="absolute top-3 left-3 right-3 flex justify-between items-center">
+                      <span className="px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-md text-[11px] font-mono text-accent border border-white/10">
+                        {project.category}
+                      </span>
+                      {project.role && (
+                        <span className="px-2.5 py-1 rounded-md bg-zinc-900/90 backdrop-blur-md text-[10px] font-mono text-gray-300 border border-white/10">
+                          {project.role}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Content */}
+                  <div
+                    className={`p-6 md:p-8 flex flex-col flex-1 justify-between gap-5 ${
+                      isFlagship ? "lg:col-span-5" : ""
+                    }`}
+                  >
                   <div className="space-y-3">
                     <h3 className="font-display text-xl font-bold text-white group-hover:text-accent transition-colors">
                       {project.title}
                     </h3>
-                    
+
                     <p className="text-xs md:text-sm text-gray-300 font-sans leading-relaxed">
                       {project.description}
                     </p>
@@ -160,7 +187,8 @@ export default function WorkContent() {
                     {/* Impact Note */}
                     {project.impact && (
                       <p className="text-[11px] font-mono text-gray-500 border-l-2 border-accent/40 pl-2.5 pt-0.5">
-                        <strong className="text-gray-400">Impact:</strong> {project.impact}
+                        <strong className="text-gray-400">Impact:</strong>{" "}
+                        {project.impact}
                       </p>
                     )}
                   </div>
@@ -199,7 +227,8 @@ export default function WorkContent() {
                   </div>
                 </div>
               </div>
-            ))}
+            );
+          })}
           </div>
         </div>
 
@@ -211,14 +240,18 @@ export default function WorkContent() {
                 <span>All-Code Archive</span>
               </h2>
               <p className="text-xs md:text-sm text-gray-400 font-sans mt-1">
-                Explore all open-source repositories and development projects from GitHub.
+                Explore all open-source repositories and development projects
+                from GitHub.
               </p>
             </div>
 
             {/* Search & Filter */}
             <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
               <div className="relative flex-1 md:w-64">
-                <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                <Search
+                  size={14}
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+                />
                 <input
                   type="text"
                   value={searchQuery}
@@ -250,7 +283,10 @@ export default function WorkContent() {
           {loading ? (
             <div className="flex flex-col gap-3">
               {[1, 2, 3, 4, 5].map((i) => (
-                <div key={i} className="h-16 w-full bg-zinc-950/60 border border-white/5 rounded-xl animate-pulse" />
+                <div
+                  key={i}
+                  className="h-16 w-full bg-zinc-950/60 border border-white/5 rounded-xl animate-pulse"
+                />
               ))}
             </div>
           ) : (
@@ -260,8 +296,12 @@ export default function WorkContent() {
                   <tr className="border-b border-white/10 text-gray-400 font-sans text-xs tracking-widest uppercase bg-white/5">
                     <th className="py-4 px-6 font-normal">Year</th>
                     <th className="py-4 px-6 font-normal">Project</th>
-                    <th className="py-4 px-6 font-normal hidden md:table-cell">Description</th>
-                    <th className="py-4 px-6 font-normal hidden sm:table-cell">Built with</th>
+                    <th className="py-4 px-6 font-normal hidden md:table-cell">
+                      Description
+                    </th>
+                    <th className="py-4 px-6 font-normal hidden sm:table-cell">
+                      Built with
+                    </th>
                     <th className="py-4 px-6 font-normal text-right">Links</th>
                   </tr>
                 </thead>
@@ -284,7 +324,9 @@ export default function WorkContent() {
                           >
                             {repo.name}
                           </a>
-                          <div className="text-xs text-gray-500 sm:hidden mt-0.5">{repo.language}</div>
+                          <div className="text-xs text-gray-500 sm:hidden mt-0.5">
+                            {repo.language}
+                          </div>
                           {repo.description && (
                             <p className="text-xs text-gray-400 md:hidden mt-1 line-clamp-2 font-sans">
                               {repo.description}
@@ -329,7 +371,10 @@ export default function WorkContent() {
                     ))
                   ) : (
                     <tr>
-                      <td colSpan={5} className="py-12 text-center text-gray-500 font-sans text-sm">
+                      <td
+                        colSpan={5}
+                        className="py-12 text-center text-gray-500 font-sans text-sm"
+                      >
                         No repositories found matching your filter.
                       </td>
                     </tr>
@@ -339,7 +384,6 @@ export default function WorkContent() {
             </div>
           )}
         </div>
-
       </div>
     </main>
   );

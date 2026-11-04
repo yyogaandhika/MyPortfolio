@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowUp } from "lucide-react";
+import { ArrowUp, FileText } from "lucide-react";
 import { SocialIcon } from "@/components/icons";
 import { navLinks } from "@/data/navigation";
 import { contactDetails } from "@/data/contact";
@@ -19,14 +19,17 @@ export default function Footer() {
     <footer className="w-full border-t border-white/10 bg-black/80 backdrop-blur-md relative z-20">
       <div className="max-w-7xl mx-auto px-6 md:px-12 lg:px-24 py-16">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 pb-12 border-b border-white/5">
-          
           {/* Brand & Bio */}
           <div className="md:col-span-5 flex flex-col gap-4">
-            <Link href="/" className="font-display font-bold text-2xl uppercase tracking-tighter text-white inline-block">
+            <Link
+              href="/"
+              className="font-display font-bold text-2xl uppercase tracking-tighter text-white inline-block w-fit"
+            >
               Yoga<span className="text-accent">.</span>
             </Link>
             <p className="font-sans text-sm text-gray-400 max-w-sm leading-relaxed">
-              Frontend & Creative Developer crafting interactive web experiences with Next.js, GSAP, and Machine Learning integrations.
+              Frontend & Creative Developer crafting interactive web experiences
+              with Next.js, GSAP, and Machine Learning integrations.
             </p>
             <div className="flex items-center gap-2 text-xs font-mono text-gray-500 mt-2">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
@@ -44,11 +47,20 @@ export default function Footer() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all inline-block"
+                  className="text-sm text-gray-400 hover:text-white hover:translate-x-1 transition-all inline-block w-fit"
                 >
                   {link.label}
                 </Link>
               ))}
+              <a
+                href={contactDetails.cvUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-accent hover:text-white hover:translate-x-1 transition-all inline-flex items-center gap-1.5 w-fit mt-1"
+              >
+                <FileText size={14} />
+                <span>Resume / CV (PDF)</span>
+              </a>
             </div>
           </div>
 
@@ -76,16 +88,18 @@ export default function Footer() {
             <div className="mt-6">
               <button
                 onClick={scrollToTop}
-                className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-gray-400 hover:text-accent transition-colors group"
+                className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-gray-400 hover:text-accent transition-colors group cursor-pointer"
               >
                 <span>Back to top</span>
                 <div className="p-1.5 rounded-full border border-white/20 group-hover:border-accent transition-colors">
-                  <ArrowUp size={12} className="group-hover:-translate-y-0.5 transition-transform" />
+                  <ArrowUp
+                    size={12}
+                    className="group-hover:-translate-y-0.5 transition-transform"
+                  />
                 </div>
               </button>
             </div>
           </div>
-
         </div>
 
         {/* Bottom Credits */}

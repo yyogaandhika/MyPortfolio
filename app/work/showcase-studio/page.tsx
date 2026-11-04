@@ -9,11 +9,9 @@ import {
   Box,
   Layers,
   Sparkles,
-  Video,
-  Monitor,
   Cpu,
-  Palette,
 } from "lucide-react";
+import CaseStudyFooterNav from "@/components/ui/CaseStudyFooterNav";
 
 export const metadata: Metadata = {
   title: "Case Study: Showcase Studio – 3D Mockup Generator | Yoga Andhika",
@@ -87,7 +85,7 @@ export default function ShowcaseStudioCaseStudy() {
             src="/ShowcaseStudio.png"
             alt="Showcase Studio 3D Viewport and Editor Preview"
             fill
-            sizes="(max-width: 1200px) 100vw, 1100px"
+            sizes="(max-width: 1200px) 100vw, 1120px"
             className="object-cover"
             priority
           />
@@ -128,7 +126,7 @@ export default function ShowcaseStudioCaseStudy() {
               <span className="p-2 rounded-lg bg-accent/10 text-accent"><Box size={20} /></span>
               <span>The Problem & Creative Vision</span>
             </h2>
-            <div className="text-gray-300 leading-relaxed space-y-4 text-base md:text-lg font-light">
+            <div className="text-gray-300 leading-relaxed space-y-4 text-base md:text-lg font-light max-w-4xl">
               <p>
                 Crafting professional 3D device mockups and cinematic promotional videos for digital products 
                 traditionally demands heavy desktop software like Blender, Cinema 4D, or After Effects. For product designers, 
@@ -254,24 +252,7 @@ export default function ShowcaseStudioCaseStudy() {
             </div>
           </section>
 
-          {/* Footer Navigation */}
-          <div className="border-t border-white/10 pt-12 flex justify-between items-center">
-            <Link
-              href="/work"
-              className="text-xs font-mono uppercase tracking-widest text-gray-400 hover:text-accent transition-colors flex items-center gap-2"
-            >
-              <ArrowLeft size={14} />
-              <span>Back to Portfolio</span>
-            </Link>
-
-            <Link
-              href="/contact"
-              className="py-3 px-6 bg-accent text-black font-semibold text-xs md:text-sm rounded-full hover:bg-white transition-colors"
-            >
-              Discuss a Project with Me
-            </Link>
-          </div>
-
+          <CaseStudyFooterNav currentSlug="showcase-studio" />
         </div>
       </div>
     </main>

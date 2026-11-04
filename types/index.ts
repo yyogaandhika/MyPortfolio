@@ -30,6 +30,7 @@ export interface Experience {
   role: string;
   company: string;
   year: string;
+  badge?: string;
   description?: string;
   highlights?: string[];
 }

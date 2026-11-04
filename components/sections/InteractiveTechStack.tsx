@@ -9,9 +9,10 @@ type CategoryFilter = "all" | "frontend" | "ml" | "backend";
 export default function InteractiveTechStack() {
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("all");
 
-  const filteredTech = activeCategory === "all"
-    ? techStack
-    : techStack.filter((t) => t.category === activeCategory);
+  const filteredTech =
+    activeCategory === "all"
+      ? techStack
+      : techStack.filter((t) => t.category === activeCategory);
 
   return (
     <section className="py-24 md:py-32 px-6 md:px-12 lg:px-24 bg-black border-t border-border overflow-hidden">
@@ -20,7 +21,8 @@ export default function InteractiveTechStack() {
           The <span className="text-accent">Arsenal</span>
         </h2>
         <p className="text-gray-400 font-sans text-base md:text-lg max-w-xl mx-auto">
-          Pragmatic, production-ready technologies applied across my web applications, client solutions, and machine learning models.
+          Pragmatic, production-ready technologies applied across my web
+          applications, client solutions, and machine learning models.
         </p>
 
         {/* Filter Pills */}
@@ -36,8 +38,8 @@ export default function InteractiveTechStack() {
               onClick={() => setActiveCategory(cat.id as CategoryFilter)}
               className={`px-4 py-2 rounded-full text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
                 activeCategory === cat.id
-                  ? "bg-accent text-black shadow-[0_0_20px_rgba(212,255,50,0.3)]"
-                  : "bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:border-white/30"
+                  ? "bg-accent text-black"
+                  : "bg-white/5 text-gray-400 border border-white/10 hover:border-white/30 hover:text-white"
               }`}
             >
               {cat.label}
@@ -47,21 +49,22 @@ export default function InteractiveTechStack() {
       </div>
 
       <div className="relative min-h-[40vh] max-w-5xl mx-auto border border-white/10 rounded-3xl p-6 md:p-12 flex flex-wrap justify-center items-center content-center gap-3 md:gap-6 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-zinc-900/60 to-transparent">
-        {filteredTech.map((tech, idx) => (
-          <TechBadge key={tech.name} item={tech} index={idx} />
+        {filteredTech.map((tech, i) => (
+          <FloatingBadge key={tech.name} item={tech} index={i} />
         ))}
       </div>
     </section>
   );
 }
 
-function TechBadge({ item, index }: { item: TechItem; index: number }) {
+function FloatingBadge({ item, index }: { item: TechItem; index: number }) {
   const badgeRef = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!badgeRef.current) return;
-    const { left, top, width, height } = badgeRef.current.getBoundingClientRect();
+    const { left, top, width, height } =
+      badgeRef.current.getBoundingClientRect();
     const x = (e.clientX - left - width / 2) * 0.4;
     const y = (e.clientY - top - height / 2) * 0.4;
     setPosition({ x, y });

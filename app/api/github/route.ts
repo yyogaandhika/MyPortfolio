@@ -199,7 +199,10 @@ export async function GET() {
     // Ensure Web-Kominfo is always included even if not listed in public endpoint
     const hasKominfo = filteredData.some((repo) => repo.name.toLowerCase().includes('kominfo'));
     if (!hasKominfo) {
-      filteredData.unshift(defaultRepos[0]);
+      const kominfoRepo = defaultRepos.find((r) => r.name.toLowerCase().includes('kominfo'));
+      if (kominfoRepo) {
+        filteredData.unshift(kominfoRepo);
+      }
     }
 
     return NextResponse.json(filteredData);

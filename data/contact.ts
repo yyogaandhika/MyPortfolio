@@ -7,12 +7,19 @@ export interface SocialLink {
 
 export const contactDetails = {
   name: "Mhd. Yoga Andhika",
-  role: "Frontend & Creative Developer",
-  location: "Pekanbaru, Indonesia",
+  role: "Full-Stack & Creative Developer",
+  location: "Pekanbaru, Riau, Indonesia",
   email: "yogaandika395@gmail.com",
   whatsappNumber: "+62 851-2111-4148",
   whatsappUrl: "https://wa.me/6285121114148",
+  cvUrl: "/CV_Mhd_Yoga_Andhika.pdf",
   availability: "Open for Internship & Freelance",
+  education: {
+    degree: "B.A.Sc (D4) in Informatics Engineering",
+    institution: "Politeknik Caltex Riau (PCR)",
+    gpa: "3.21 / 4.00",
+    expectedGraduation: "2027",
+  },
   socials: [
     {
       id: "github" as const,

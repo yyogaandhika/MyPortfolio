@@ -3,13 +3,17 @@
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import Link from "next/link";
-import { ArrowDown, Mail } from "lucide-react";
+import { ArrowDown, Mail, FileDown } from "lucide-react";
+import { contactDetails } from "@/data/contact";
 
 export default function Hero() {
   const container = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    if (
+      typeof window !== "undefined" &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
       return;
     }
 
@@ -23,13 +27,13 @@ export default function Hero() {
         delay: 0.2,
       });
     }, container);
-    
+
     return () => ctx.revert();
   }, []);
 
   return (
-    <section 
-      ref={container} 
+    <section
+      ref={container}
       className="relative h-screen flex flex-col justify-center items-start px-6 md:px-12 lg:px-24 pt-20"
     >
       <div className="overflow-hidden mb-4">
@@ -37,7 +41,7 @@ export default function Hero() {
           Hello, I am Mhd. Yoga Andhika — Frontend & Creative Dev
         </p>
       </div>
-      
+
       <div className="overflow-hidden">
         <h1 className="reveal-text font-display text-6xl md:text-8xl lg:text-[10rem] font-bold uppercase leading-[0.85] tracking-tighter text-white">
           Creative
@@ -51,7 +55,8 @@ export default function Hero() {
 
       <div className="mt-8 md:mt-10 overflow-hidden max-w-2xl">
         <p className="reveal-text font-sans text-gray-400 text-lg md:text-2xl leading-relaxed font-light">
-          Crafting fluid, interactive web applications with Next.js & GSAP, and bridging thoughtful user interfaces with Machine Learning systems.
+          Crafting fluid, interactive web applications with Next.js & GSAP, and
+          bridging thoughtful user interfaces with Machine Learning systems.
         </p>
       </div>
 
@@ -80,6 +85,14 @@ export default function Hero() {
           <Mail size={16} />
           <span>Get In Touch</span>
         </Link>
+        <a
+          href={contactDetails.cvUrl}
+          download="CV_Mhd_Yoga_Andhika.pdf"
+          className="reveal-text px-8 py-3.5 bg-white/5 backdrop-blur-sm border border-white/15 text-gray-300 font-semibold uppercase tracking-wider text-xs md:text-sm rounded-full hover:bg-white hover:text-black transition-colors flex items-center gap-2"
+        >
+          <FileDown size={16} />
+          <span>Download CV</span>
+        </a>
       </div>
 
       <div className="absolute bottom-10 right-6 md:right-12 font-sans text-xs md:text-sm text-gray-400 overflow-hidden flex items-center gap-2 bg-zinc-950/80 px-4 py-2 rounded-full border border-white/10 backdrop-blur-md">
@@ -87,7 +100,9 @@ export default function Hero() {
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
           <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
         </span>
-        <span className="font-mono text-xs text-gray-300">status: open_for_opportunities</span>
+        <span className="font-mono text-xs text-gray-300">
+          status: open_for_opportunities
+        </span>
       </div>
     </section>
   );
