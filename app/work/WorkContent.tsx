@@ -112,41 +112,32 @@ export default function WorkContent() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {projects.map((project, index) => {
-              const isFlagship = index === 0;
+            {projects.map((project) => (
+              <div
+                key={project.id}
+                className="group relative rounded-2xl overflow-hidden border border-white/10 bg-zinc-950 flex flex-col hover:border-accent transition-all duration-300"
+              >
+                {/* Image */}
+                <div className="relative w-full aspect-[16/10] overflow-hidden bg-zinc-900">
+                  <Image
+                    src={project.image}
+                    alt={project.title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-90" />
 
-              return (
-                <div
-                  key={project.id}
-                  className={`group relative rounded-2xl overflow-hidden border border-white/10 bg-zinc-950 flex flex-col hover:border-accent transition-all duration-300 ${
-                    isFlagship ? "md:col-span-2 lg:grid lg:grid-cols-12" : ""
-                  }`}
-                >
-                  {/* Image */}
-                  <div
-                    className={`relative w-full overflow-hidden bg-zinc-900 ${
-                      isFlagship
-                        ? "lg:col-span-7 aspect-[16/10] lg:aspect-auto lg:min-h-[360px]"
-                        : "aspect-[16/10]"
-                    }`}
-                  >
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      sizes={
-                        isFlagship
-                          ? "(max-width: 1024px) 100vw, 60vw"
-                          : "(max-width: 768px) 100vw, 50vw"
-                      }
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-90" />
-
-                    <div className="absolute top-3 left-3 right-3 flex justify-between items-center">
-                      <span className="px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-md text-[11px] font-mono text-accent border border-white/10">
-                        {project.category}
-                      </span>
+                  <div className="absolute top-3 left-3 right-3 flex justify-between items-center">
+                    <span className="px-2.5 py-1 rounded-md bg-black/80 backdrop-blur-md text-[11px] font-mono text-accent border border-white/10">
+                      {project.category}
+                    </span>
+                    <div className="flex items-center gap-1.5">
+                      {project.demoAccounts && (
+                        <span className="px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 backdrop-blur-md text-[10px] font-mono border border-emerald-500/30">
+                          Demo Login Ready
+                        </span>
+                      )}
                       {project.role && (
                         <span className="px-2.5 py-1 rounded-md bg-zinc-900/90 backdrop-blur-md text-[10px] font-mono text-gray-300 border border-white/10">
                           {project.role}
@@ -154,13 +145,10 @@ export default function WorkContent() {
                       )}
                     </div>
                   </div>
+                </div>
 
-                  {/* Content */}
-                  <div
-                    className={`p-6 md:p-8 flex flex-col flex-1 justify-between gap-5 ${
-                      isFlagship ? "lg:col-span-5" : ""
-                    }`}
-                  >
+                {/* Content */}
+                <div className="p-6 flex flex-col flex-1 justify-between gap-5">
                   <div className="space-y-3">
                     <h3 className="font-display text-xl font-bold text-white group-hover:text-accent transition-colors">
                       {project.title}
@@ -227,8 +215,7 @@ export default function WorkContent() {
                   </div>
                 </div>
               </div>
-            );
-          })}
+            ))}
           </div>
         </div>
 

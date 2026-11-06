@@ -1,3 +1,12 @@
+export interface DemoAccount {
+  role: string;
+  email: string;
+  password?: string;
+  displayName?: string;
+  loginRoute?: string;
+  permissions?: string;
+}
+
 export interface Project {
   id: number | string;
   slug?: string;
@@ -12,6 +21,7 @@ export interface Project {
   techStack?: string[];
   impact?: string;
   hasCaseStudy?: boolean;
+  demoAccounts?: DemoAccount[];
 }
 
 export interface GitHubRepo {

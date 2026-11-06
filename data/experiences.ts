@@ -2,13 +2,14 @@ import { Experience } from "@/types";
 
 export const experiences: Experience[] = [
   {
-    role: "Frontend & Creative Developer",
-    company: "SI TUAH – Diskominfo Kota Dumai & Showcase Studio",
+    role: "Full-Stack & Creative Developer",
+    company: "Sekolah Dharma Loka, SI TUAH & Showcase Studio",
     year: "2026",
     badge: "Client & Flagship Engineering",
     description:
-      "Engineered the Integrated Regional Sectoral Data & Analytics Portal (SI TUAH) for Diskominfo Kota Dumai and created Showcase Studio, a browser-based 3D WebGL mockup & video export suite.",
+      "Engineered the multi-role academic ecosystem & PPDB portal for Sekolah Dharma Loka Pekanbaru, the Integrated Regional Sectoral Analytics Portal (SI TUAH) for Diskominfo Kota Dumai, and created Showcase Studio (3D WebGL mockup suite).",
     highlights: [
+      "Architected multi-role Supabase Row Level Security (RLS) across 4 educational units (PG/TK, SD, SMP, SMA) with digital admissions verification desks.",
       "Consolidated 15+ municipal government sectors into interactive real-time Chart.js & React dashboards.",
       "Built hardware-accelerated Three.js & WebCodecs 60 FPS video/GIF rendering directly in the browser.",
     ],
@@ -65,9 +66,9 @@ export const experiences: Experience[] = [
 
 export const keyMetrics = [
   {
-    value: "5+",
+    value: "6+",
     label: "Production Systems",
-    detail: "WebGL 3D, GovTech & ML Apps",
+    detail: "Full-Stack, 3D WebGL & ML",
   },
   {
     value: "3.21",

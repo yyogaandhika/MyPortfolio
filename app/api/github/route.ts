@@ -32,6 +32,11 @@ const repoMetadata: Record<string, { description: string; language?: string; hom
     language: 'React & JS',
     homepage: 'https://website-barang-kedai.vercel.app',
   },
+  'dharma-loka-school': {
+    description: 'Integrated digital academic ecosystem and online PPDB admission portal for Sekolah Dharma Loka (PG/TK, SD, SMP, SMA) with Supabase RLS.',
+    language: 'Next.js & Supabase',
+    homepage: 'https://dharma-loka-school-liard.vercel.app',
+  },
   'myportfolio': {
     description: 'Personal creative portfolio built with Next.js, TypeScript, Tailwind CSS, and fluid GSAP animations.',
     language: 'TypeScript & Next.js',
@@ -44,6 +49,17 @@ const repoMetadata: Record<string, { description: string; language?: string; hom
 };
 
 const defaultRepos: GitHubRepo[] = [
+  {
+    id: 1589412301,
+    name: 'dharma-loka-school',
+    description: 'Integrated digital academic ecosystem and online PPDB admission portal for Sekolah Dharma Loka (PG/TK, SD, SMP, SMA) with Supabase RLS.',
+    html_url: 'https://github.com/yyogaandhika/dharma-loka-school.git',
+    homepage: 'https://dharma-loka-school-liard.vercel.app',
+    stargazers_count: 1,
+    language: 'Next.js & Supabase',
+    created_at: '2026-11-04T10:00:00Z',
+    updated_at: '2026-11-06T09:00:00Z',
+  },
   {
     id: 1458923011,
     name: 'ShowCase-Studio',
