@@ -4,10 +4,12 @@ import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import Link from "next/link";
 import { ArrowDown, Mail, FileDown } from "lucide-react";
-import { contactDetails } from "@/data/contact";
+import { contactDetails as fallbackContact } from "@/data/contact";
+import { ProfileData } from "@/lib/data";
 
-export default function Hero() {
+export default function Hero({ profile }: { profile?: ProfileData } = {}) {
   const container = useRef<HTMLDivElement>(null);
+  const contact = profile || fallbackContact;
 
   useEffect(() => {
     if (
@@ -38,7 +40,7 @@ export default function Hero() {
     >
       <div className="overflow-hidden mb-4">
         <p className="reveal-text font-sans text-accent tracking-widest uppercase text-xs md:text-sm font-semibold">
-          Hello, I am Mhd. Yoga Andhika — Frontend & Creative Dev
+          Hello, I am Mhd. Yoga Andhika — {contact.role}
         </p>
       </div>
 
@@ -86,7 +88,7 @@ export default function Hero() {
           <span>Get In Touch</span>
         </Link>
         <a
-          href={contactDetails.cvUrl}
+          href={contact.cvUrl}
           download="CV_Mhd_Yoga_Andhika.pdf"
           className="reveal-text px-8 py-3.5 bg-white/5 backdrop-blur-sm border border-white/15 text-gray-300 font-semibold uppercase tracking-wider text-xs md:text-sm rounded-full hover:bg-white hover:text-black transition-colors flex items-center gap-2"
         >
@@ -101,7 +103,7 @@ export default function Hero() {
           <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
         </span>
         <span className="font-mono text-xs text-gray-300">
-          status: open_for_opportunities
+          status: {contact.availability.toLowerCase().replace(/\s+/g, "_")}
         </span>
       </div>
     </section>

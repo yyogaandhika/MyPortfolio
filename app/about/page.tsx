@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import AboutContent from "./AboutContent";
+import { getExperiences, getProfile } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "About Me | Yoga Andhika – Frontend & Creative Developer",
@@ -12,6 +13,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AboutPage() {
-  return <AboutContent />;
+export default async function AboutPage() {
+  const [experiences, profile] = await Promise.all([
+    getExperiences(),
+    getProfile(),
+  ]);
+
+  return <AboutContent initialExperiences={experiences} profile={profile} />;
 }

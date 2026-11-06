@@ -5,10 +5,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { gsap } from "gsap";
 import { Code, ExternalLink, Search, ArrowUpRight, Sparkles } from "lucide-react";
-import { GitHubRepo } from "@/types";
-import { projects } from "@/data/projects";
+import { GitHubRepo, Project } from "@/types";
+import { projects as baselineProjects } from "@/data/projects";
 
-export default function WorkContent() {
+export default function WorkContent({
+  initialProjects,
+}: {
+  initialProjects?: Project[];
+} = {}) {
+  const projects = initialProjects && initialProjects.length > 0 ? initialProjects : baselineProjects;
   const container = useRef<HTMLDivElement>(null);
   const [repos, setRepos] = useState<GitHubRepo[]>([]);
   const [loading, setLoading] = useState(true);

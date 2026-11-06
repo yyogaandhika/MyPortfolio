@@ -6,11 +6,21 @@ import Link from "next/link";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FileDown } from "lucide-react";
-import { experiences } from "@/data/experiences";
-import { contactDetails } from "@/data/contact";
+import { experiences as baselineExperiences } from "@/data/experiences";
+import { contactDetails as baselineContact } from "@/data/contact";
 import { SocialIcon } from "@/components/icons";
+import { Experience } from "@/types";
+import { ProfileData } from "@/lib/data";
 
-export default function AboutContent() {
+export default function AboutContent({
+  initialExperiences,
+  profile,
+}: {
+  initialExperiences?: Experience[];
+  profile?: ProfileData;
+} = {}) {
+  const experiences = initialExperiences && initialExperiences.length > 0 ? initialExperiences : baselineExperiences;
+  const contactDetails = profile || baselineContact;
   const container = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

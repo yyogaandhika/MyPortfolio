@@ -6,13 +6,19 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { ArrowUpRight, Code, KeyRound } from "lucide-react";
-import { projects } from "@/data/projects";
+import { projects as staticProjects } from "@/data/projects";
+import { Project } from "@/types";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-export default function FeaturedProjects() {
+export default function FeaturedProjects({
+  projects: customProjects,
+}: {
+  projects?: Project[];
+} = {}) {
+  const projects = customProjects && customProjects.length > 0 ? customProjects : staticProjects;
   const container = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

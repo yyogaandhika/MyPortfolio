@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import WorkContent from "./WorkContent";
+import { getProjects } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Works & Case Studies | Yoga Andhika",
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function WorkPage() {
-  return <WorkContent />;
+export default async function WorkPage() {
+  const projects = await getProjects();
+  return <WorkContent initialProjects={projects} />;
 }

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ContactContent from "./ContactContent";
+import { getProfile } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Contact & Collaboration | Yoga Andhika",
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function ContactPage() {
-  return <ContactContent />;
+export default async function ContactPage() {
+  const profile = await getProfile();
+  return <ContactContent profile={profile} />;
 }

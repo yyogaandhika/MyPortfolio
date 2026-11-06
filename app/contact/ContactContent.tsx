@@ -3,10 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ArrowUpRight, FileDown } from "lucide-react";
-import { contactDetails } from "@/data/contact";
+import { contactDetails as baselineContact } from "@/data/contact";
 import { SocialIcon } from "@/components/icons";
+import { ProfileData } from "@/lib/data";
 
-export default function ContactContent() {
+export default function ContactContent({ profile }: { profile?: ProfileData } = {}) {
+  const contactDetails = profile || baselineContact;
   const container = useRef<HTMLDivElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
