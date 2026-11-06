@@ -37,6 +37,7 @@ export interface GitHubRepo {
 }
 
 export interface Experience {
+  id?: string;
   role: string;
   company: string;
   year: string;

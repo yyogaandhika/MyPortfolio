@@ -106,28 +106,37 @@ export async function syncLocalDataToSupabaseAction(): Promise<ActionResult> {
       );
     }
 
-    // 3. Sync Experiences
+    // 3. Sync Experiences (use deterministic IDs to prevent duplication on multiple syncs)
     for (let i = 0; i < baselineExperiences.length; i++) {
       const exp = baselineExperiences[i];
-      await supabase.from("portfolio_experiences").upsert({
-        role: exp.role,
-        company: exp.company,
-        year: exp.year,
-        badge: exp.badge || "",
-        description: exp.description || "",
-        highlights: exp.highlights || [],
-        order_index: i,
-      });
+      await supabase.from("portfolio_experiences").upsert(
+        {
+          id: `exp-${i + 1}`,
+          role: exp.role,
+          company: exp.company,
+          year: exp.year,
+          badge: exp.badge || "",
+          description: exp.description || "",
+          highlights: exp.highlights || [],
+          order_index: i,
+        },
+        { onConflict: "id" }
+      );
     }
 
-    // 4. Sync Skills
+    // 4. Sync Skills (use deterministic IDs to prevent duplication on multiple syncs)
     for (let i = 0; i < baselineSkills.length; i++) {
       const s = baselineSkills[i];
-      await supabase.from("portfolio_skills").upsert({
-        name: s.name,
-        category: s.category,
-        order_index: i,
-      });
+      const skillId = `skill-${s.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")}`;
+      await supabase.from("portfolio_skills").upsert(
+        {
+          id: skillId,
+          name: s.name,
+          category: s.category,
+          order_index: i,
+        },
+        { onConflict: "id" }
+      );
     }
 
     revalidateAllPublicPaths();

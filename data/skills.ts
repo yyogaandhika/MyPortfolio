@@ -1,4 +1,5 @@
 export interface TechItem {
+  id?: string;
   name: string;
   category: "frontend" | "ml" | "backend";
 }

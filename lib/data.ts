@@ -118,6 +118,7 @@ export async function getExperiences(): Promise<Experience[]> {
     }
 
     return data.map((item) => ({
+      id: item.id,
       role: item.role,
       company: item.company,
       year: item.year,
@@ -147,6 +148,7 @@ export async function getSkills(): Promise<TechItem[]> {
     }
 
     return data.map((item) => ({
+      id: item.id,
       name: item.name,
       category: item.category as "frontend" | "ml" | "backend",
     }));
