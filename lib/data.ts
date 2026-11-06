@@ -167,3 +167,4 @@ export async function getKeyMetrics() {
     ...fallbackKeyMetrics.slice(1),
   ];
 }
+

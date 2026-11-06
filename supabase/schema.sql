@@ -122,3 +122,4 @@ CREATE POLICY "Admin Update portfolio-assets" ON storage.objects
 
 CREATE POLICY "Admin Delete portfolio-assets" ON storage.objects
   FOR DELETE TO authenticated USING (bucket_id = 'portfolio-assets');
+
