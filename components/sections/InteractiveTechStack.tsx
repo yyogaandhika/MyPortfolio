@@ -2,17 +2,23 @@
 
 import { motion } from "framer-motion";
 import { useRef, useState } from "react";
-import { techStack, TechItem } from "@/data/skills";
+import { techStack as fallbackTechStack, TechItem } from "@/data/skills";
 
 type CategoryFilter = "all" | "frontend" | "ml" | "backend";
 
-export default function InteractiveTechStack() {
+interface InteractiveTechStackProps {
+  skills?: TechItem[];
+}
+
+export default function InteractiveTechStack({ skills }: InteractiveTechStackProps) {
   const [activeCategory, setActiveCategory] = useState<CategoryFilter>("all");
+
+  const techList = skills && skills.length > 0 ? skills : fallbackTechStack;
 
   const filteredTech =
     activeCategory === "all"
-      ? techStack
-      : techStack.filter((t) => t.category === activeCategory);
+      ? techList
+      : techList.filter((t) => t.category === activeCategory);
 
   return (
     <section className="py-24 md:py-32 px-6 md:px-12 lg:px-24 bg-black border-t border-border overflow-hidden">
@@ -50,7 +56,7 @@ export default function InteractiveTechStack() {
 
       <div className="relative min-h-[40vh] max-w-5xl mx-auto border border-white/10 rounded-3xl p-6 md:p-12 flex flex-wrap justify-center items-center content-center gap-3 md:gap-6 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-zinc-900/60 to-transparent">
         {filteredTech.map((tech, i) => (
-          <FloatingBadge key={tech.name} item={tech} index={i} />
+          <FloatingBadge key={tech.id || `${tech.name}-${i}`} item={tech} index={i} />
         ))}
       </div>
     </section>
